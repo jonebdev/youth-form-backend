@@ -13,7 +13,7 @@ module.exports = {
     snap:"335309",
     tiktok:"335310",
     facebook:"335312",
-    todays_date:"335318",
-    prayer_requests: "335319"
+    todays_date:"336018",
+    prayer_requests: "336019"
 }
 

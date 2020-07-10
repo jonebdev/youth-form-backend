@@ -16,7 +16,9 @@ module.exports = async (req, res) => {
     const churchIAttend = createCustomField(field_id.church_i_attend, values.person.church_i_attend)
     const hobbies = createCustomField(field_id.hobbies, values.person.hobbies)
     const howYouHeard = createCustomField(field_id.how_you_heard, values.person.how_you_heard)
-    const parentsEmail = createCustomField(field_id.parents_email, values.parents_email)
+    const parentsName = createCustomField(field_id.parents_name, values.person.parents_name)
+    const parentsEmail = createCustomField(field_id.parents_email, values.person.parents_email)
+    const snap = createCustomField(field_id.snap, values.person.snap)
     const instagram = createCustomField(field_id.instagram, values.person.instagram)
     const twitter = createCustomField(field_id.twitter, values.person.twitter)
     const tiktok = createCustomField(field_id.tiktok, values.person.tiktok)
@@ -30,7 +32,7 @@ module.exports = async (req, res) => {
     let phoneNumberURL = ''
     let fieldDataURL = '' 
 
-    //sending the data and getting the other urls
+    // sending the data and getting the other urls
     await postData(`${process.env.PC_URL}/people/v2/people`, person)
         .then(result => {
             addressURL = result.data.data.links.addresses
@@ -49,10 +51,12 @@ module.exports = async (req, res) => {
     await postData(fieldDataURL, churchIAttend)
     await postData(fieldDataURL, hobbies)
     await postData(fieldDataURL, howYouHeard)
+    await postData(fieldDataURL, parentsName)
     await postData(fieldDataURL, parentsEmail)
     await postData(fieldDataURL, instagram)
     await postData(fieldDataURL, twitter)
     await postData(fieldDataURL, tiktok)
+    await postData(fieldDataURL, snap)
     await postData(fieldDataURL, facebook)
     await postData(fieldDataURL, todaysDate)
     await postData(fieldDataURL, prayer_requests)

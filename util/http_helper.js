@@ -55,7 +55,7 @@ module.exports = {
         return reqbody
     },
 
-    createAddress(city, state, street, zip, url){
+    createAddress(city, state, street, zip){
         const reqbody = {
             data: {
                 attributes: {
