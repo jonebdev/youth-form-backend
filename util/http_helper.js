@@ -1,7 +1,6 @@
 const axios = require("axios")
 
 module.exports = {    
-    //will only limit to planning center but there is going to be more that i am gonna have to do
     async postData(url, body){
         return axios({
             method: 'post',
@@ -17,7 +16,7 @@ module.exports = {
     },
 
 
-    createPerson(first_name, last_name, birthday, grade, url){
+    createPerson(first_name, last_name, birthday, grade){
         const reqbody = {
             data: {
                 attributes: {

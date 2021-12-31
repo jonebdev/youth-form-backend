@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     console.log('hi')
     console.log(req.body)
     const values = req.body
-    const person = createPerson(values.person.first_name, values.person.last_name, values.person.birthday, values.person.grade, `${process.env.REACT_APP_URL}/people/v2/people`)
+    const person = createPerson(values.person.first_name, values.person.last_name, values.person.birthday, values.person.grade)
     const address = createAddress(values.person.city, values.person.state, values.person.street, values.person.zip);
     const email = createEmail(values.person.email);
     const cell = createCell(values.person.cell);
@@ -61,5 +61,5 @@ module.exports = async (req, res) => {
     await postData(fieldDataURL, todaysDate)
     await postData(fieldDataURL, prayer_requests)
 
-    res.send('person sucessfully created')
+    res.send({'created': true})
 }
