@@ -42,24 +42,26 @@ module.exports = async (req, res) => {
             return result
         })
     
-    await postData(addressURL, address)
-    await postData(emailURL, email)
-    await postData(phoneNumberURL, cell)
-    await postData(fieldDataURL, school)
-    await postData(fieldDataURL, invitedBy)
-    await postData(fieldDataURL, goToChurch)
-    await postData(fieldDataURL, churchIAttend)
-    await postData(fieldDataURL, hobbies)
-    await postData(fieldDataURL, howYouHeard)
-    await postData(fieldDataURL, parentsName)
-    await postData(fieldDataURL, parentsEmail)
-    await postData(fieldDataURL, instagram)
-    await postData(fieldDataURL, twitter)
-    await postData(fieldDataURL, tiktok)
-    await postData(fieldDataURL, snap)
-    await postData(fieldDataURL, facebook)
-    await postData(fieldDataURL, todaysDate)
-    await postData(fieldDataURL, prayer_requests)
+    Promise.all([
+        postData(addressURL, address),
+        postData(emailURL, email),
+        postData(phoneNumberURL, cell),
+        postData(fieldDataURL, school),
+        postData(fieldDataURL, invitedBy),
+        postData(fieldDataURL, goToChurch),
+        postData(fieldDataURL, churchIAttend),
+        postData(fieldDataURL, hobbies),
+        postData(fieldDataURL, howYouHeard),
+        postData(fieldDataURL, parentsName),
+        postData(fieldDataURL, parentsEmail),
+        postData(fieldDataURL, instagram),
+        postData(fieldDataURL, twitter),
+        postData(fieldDataURL, tiktok),
+        postData(fieldDataURL, snap),
+        postData(fieldDataURL, facebook),
+        postData(fieldDataURL, todaysDate),
+        postData(fieldDataURL, prayer_requests),
+    ])
 
     res.send({'created': true})
 }

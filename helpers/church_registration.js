@@ -38,13 +38,15 @@ module.exports = async (req, res) => {
             return result
         })
     
-    await postData(addressURL, address)
-    await postData(emailURL, email)
-    await postData(phoneNumberURL, cell)
-    await postData(fieldDataURL, howYouHeard)
-    await postData(fieldDataURL, todaysDate)
-    await postData(fieldDataURL, prayer_requests)
-    await postData(fieldDataURL, likeToKnowAbout)
+    Promise.all([
+        postData(addressURL, address),
+        postData(emailURL, email),
+        postData(phoneNumberURL, cell),
+        postData(fieldDataURL, howYouHeard),
+        postData(fieldDataURL, todaysDate),
+        postData(fieldDataURL, prayer_requests),
+        postData(fieldDataURL, likeToKnowAbout)
+    ])
 
-    res.send('person sucessfully created')
+    res.send({'created': true})
 }
