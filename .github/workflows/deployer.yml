@@ -17,7 +17,6 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
 
       # the actual deployment to google
       - name: Cloud Functions Deploy
@@ -35,7 +34,8 @@ jobs:
           timeout: 60
           # the maximum number of instances for the function.
           max_instances: 1
-          # optional configs, see google-cloud-actions/deploy-cloud-functions for full reference
-          # list of key-value pairs to set as environment variables in the form KEY1=VALUE1,KEY2=VALUE2.
-          env_vars: PC_URL=${{ secrets.PC_URL }}, PC_API_KEY=${{ secrets.PC_API_KEY }}, PC_API_SECRET=${{ secrets.PC_API_SECRET }}
+          env_vars: |-
+            PC_URL=${{ secrets.PC_URL }}
+            PC_API_KEY=${{ secrets.PC_API_KEY }}
+            PC_API_SECRET=${{ secrets.PC_API_SECRET }}
 
