@@ -3,8 +3,6 @@ const {postData, createAddress, createCell, createCustomField, createEmail, crea
 
 
 module.exports = async (req, res) => {
-    console.log('hi')
-    console.log(req.body)
     const values = req.body
     const person = createPerson(values.person.first_name, values.person.last_name, values.person.birthday, values.person.grade)
     const address = createAddress(values.person.city, values.person.state, values.person.street, values.person.zip);
