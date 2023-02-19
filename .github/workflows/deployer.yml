@@ -11,18 +11,23 @@ jobs:
     steps:
     # checkout to our repository so we have access to the source code
       - uses: actions/checkout@v2
+      
+      - name: Setup GCP Service Account
+        uses: google-github-actions/auth@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
 
       # the actual deployment to google
       - name: Cloud Functions Deploy
         uses: google-github-actions/deploy-cloud-functions@main
         with:
-          credentials: ${{ secrets.GCP_SA_KEY }}
           name: lcf-registration-backend
-          description: LCF registration backend # nullable
           project_id: ${{ secrets.GCP_PROJECT_ID }}
+          description: LCF registration backend # nullable
           region: us-east4
-          source_dir: src
-          # name of our function in our main.py file, defaults to the resource name suffix 
+          source_dir: ./
           entry_point: app
           # runtime to use for the function
           runtime: nodejs16

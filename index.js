@@ -3,9 +3,11 @@ const serverless = require('serverless-http');
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const PORT = process.env.PORT || 5000
-const routes = require('./routes')
+const PORT = process.env.PORT || 8080
+const routes = require('./src/routes')
+
 const app = express()
+
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
@@ -16,8 +18,8 @@ app.get('/', function (req, res) {
     res.send('Hello World!')
 })
 
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`listening on port ${PORT}`)
+// })
 
-module.exports.handler = serverless(app);
+module.exports = {app}
