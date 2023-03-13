@@ -21,4 +21,9 @@ module.exports = {
     lcf_todays_date: "512481",
     lcf_how_you_heard: "512482",
     lcf_like_to_know_about: "512492",
+    // children church fields
+    children_school: "633107",
+    parent_name: "633108",
+    children_health: "633109",
+    children_how_you_heard: "633110"
 }
