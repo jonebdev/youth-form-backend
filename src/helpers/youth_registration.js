@@ -1,5 +1,12 @@
 const field_id  = require("../util/custom_fields")
-const {postData, createAddress, createCell, createCustomField, createEmail, createPerson} = require('../util/http_helper')
+const {
+        postData, 
+        createAddress, 
+        createCell, 
+        createCustomField, 
+        createEmail, 
+        createPerson
+    } = require('../util/http_helper')
 
 
 module.exports = async (req, res) => {
@@ -8,7 +15,6 @@ module.exports = async (req, res) => {
     const address = createAddress(values.person.city, values.person.state, values.person.street, values.person.zip);
     const email = createEmail(values.person.email);
     const cell = createCell(values.person.cell);
-    const school = createCustomField(field_id.school, values.person.school);
     const invitedBy = createCustomField(field_id.invited_by, values.person.invited_by)
     const goToChurch = createCustomField(field_id.go_to_church, values.person.go_to_church)
     const churchIAttend = createCustomField(field_id.church_i_attend, values.person.church_i_attend)
