@@ -4,5 +4,4 @@ node_modules/
 serverless.yml
 .DS_Store
 firebase.json
-.eslintrc.json
 .serverless/

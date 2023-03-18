@@ -1,9 +1,10 @@
 require('dotenv').config({ path: '.env' })
-const serverless = require('serverless-http')
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const PORT = process.env.PORT || 9000
+// uncomment for local use
+// const PORT = process.env.PORT || 9000
 const routes = require('./src/routes')
 
 const app = express()
@@ -14,7 +15,7 @@ app.use(bodyParser.json())
 
 app.use('/', routes)
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 

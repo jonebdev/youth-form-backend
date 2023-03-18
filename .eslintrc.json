@@ -1,0 +1,18 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "jest": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended", "airbnb-base", "prettier"],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+        // Turning this rule off as setting a property on the request object (`req`)
+        // is a common pattern in the Express framework
+        "no-param-reassign": "off",
+        "camelcase": "off"
+    }
+}

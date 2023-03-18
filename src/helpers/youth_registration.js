@@ -54,6 +54,8 @@ module.exports = async (req, res) => {
         field_id.instagram,
         values.person.instagram
     )
+    const school = createCustomField(field_id.school, values.person.school)
+
     const twitter = createCustomField(field_id.twitter, values.person.twitter)
     const tiktok = createCustomField(field_id.tiktok, values.person.tiktok)
     const facebook = createCustomField(
@@ -69,7 +71,7 @@ module.exports = async (req, res) => {
         values.person.prayer_requests
     )
 
-    //set up for URLS, they cant be consts
+    // set up for URLS, they cant be consts
     let addressURL = ''
     let emailURL = ''
     let phoneNumberURL = ''
