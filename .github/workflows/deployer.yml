@@ -4,38 +4,38 @@ name: Deployment
 on: [push]
 
 jobs:
-  run:
-    # worker runs on latest ubuntu
-    runs-on: ubuntu-latest
+    run:
+        # worker runs on latest ubuntu
+        runs-on: ubuntu-latest
 
-    steps:
-    # checkout to our repository so we have access to the source code
-      - uses: actions/checkout@v2
-      
-      - name: Setup GCP Service Account
-        uses: google-github-actions/auth@v1
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+        steps:
+            # checkout to our repository so we have access to the source code
+            - uses: actions/checkout@v2
 
-      # the actual deployment to google
-      - name: Cloud Functions Deploy
-        uses: google-github-actions/deploy-cloud-functions@main
-        with:
-          name: lcf-registration-backend
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          description: LCF registration backend # nullable
-          region: us-east4
-          source_dir: ./
-          entry_point: app
-          # runtime to use for the function
-          runtime: nodejs16
-          # the function execution timeout
-          timeout: 60
-          # the maximum number of instances for the function.
-          max_instances: 1
-          env_vars: |-
-            PC_URL=${{ secrets.PC_URL }}
-            PC_API_KEY=${{ secrets.PC_API_KEY }}
-            PC_API_SECRET=${{ secrets.PC_API_SECRET }}
+            - name: Setup GCP Service Account
+              uses: google-github-actions/auth@v1
+              with:
+                  project_id: ${{ secrets.GCP_PROJECT_ID }}
+                  credentials_json: ${{ secrets.GCP_SA_KEY }}
 
+            # the actual deployment to google
+            - name: Cloud Functions Deploy
+              uses: google-github-actions/deploy-cloud-functions@main
+              with:
+                  name: lcf-registration-backend
+                  project_id: ${{ secrets.GCP_PROJECT_ID }}
+                  description: LCF registration backend # nullable
+                  region: us-east4
+                  source_dir: ./
+                  entry_point: app
+                  # runtime to use for the function
+                  runtime: nodejs16
+                  # the function execution timeout
+                  timeout: 60
+                  # the maximum number of instances for the function.
+                  max_instances: 1
+                  env_vars: |-
+                      PC_URL=${{ secrets.PC_URL }}
+                      PC_API_KEY=${{ secrets.PC_API_KEY }}
+                      PC_API_SECRET=${{ secrets.PC_API_SECRET }}
+                      IS_LOCAL=false

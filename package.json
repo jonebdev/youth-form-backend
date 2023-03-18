@@ -6,7 +6,7 @@
         "serve": "firebase emulators:start --only functions",
         "shell": "firebase functions:shell",
         "start": "npx nodemon index.js",
-        "prepare": "is-ci || husky install"
+        "prepare": "$IS_LOCAL || husky install"
     },
     "main": "index.js",
     "engines": {
