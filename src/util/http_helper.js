@@ -1,82 +1,83 @@
-const axios = require("axios")
+const axios = require('axios')
 
-module.exports = {    
-    async postData(url, body){
-        return axios({
-            method: 'post',
-            url: url,
-            data: body, 
-            auth: {
-                username: process.env.PC_API_KEY,
-                password: process.env.PC_API_SECRET
-            }
-        })
-        // .then(res =>  JSON.stringify(res))
-        .catch(err =>  console.log(err))
+module.exports = {
+    async postData(url, body) {
+        return (
+            axios({
+                method: 'post',
+                url,
+                data: body,
+                auth: {
+                    username: process.env.PC_API_KEY,
+                    password: process.env.PC_API_SECRET,
+                },
+            })
+                // .then(res =>  JSON.stringify(res))
+                .catch(err => console.log(err))
+        )
     },
 
-
-    createPerson(first_name, last_name, birthday, grade){
+    createPerson(first_name, last_name, birthday, grade) {
         const reqbody = {
             data: {
                 attributes: {
-                    first_name: first_name,
-                    last_name: last_name,
+                    first_name,
+                    last_name,
                     birthdate: birthday,
-                    grade: grade
-                }
-            }
+                    grade,
+                },
+            },
         }
         return reqbody
     },
 
-    createEmail(address, url) {
+    createEmail(address) {
         const reqbody = {
             data: {
                 attributes: {
-                    address: address,
-                    location: 'Home'
-                }
-            }
+                    address,
+                    location: 'Home',
+                },
+            },
         }
         return reqbody
     },
 
-    createCell(number, url) {
+    createCell(number) {
         const reqbody = {
             data: {
                 attributes: {
-                    number: number,
-                    location: 'Cell'
-                }
-            }
+                    number,
+                    location: 'Cell',
+                },
+            },
         }
         return reqbody
     },
 
-    createAddress(city, state, street, zip){
+    createAddress(city, state, street, zip) {
         const reqbody = {
             data: {
                 attributes: {
-                    city: city,
-                    state: state,
-                    street: street,
-                    zip: zip,
-                    location: "Home"
-                }
-            }
+                    city,
+                    state,
+                    street,
+                    zip,
+                    location: 'Home',
+                },
+            },
         }
         return reqbody
     },
 
-    createCustomField(id, value, url){
+    createCustomField(id, value) {
         const reqbody = {
             data: {
                 attributes: {
                     field_definition_id: id,
-                    value: value
-                }
-            }
+                    value,
+                },
+            },
         }
         return reqbody
     },
